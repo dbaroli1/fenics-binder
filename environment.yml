@@ -1,5 +1,6 @@
 channels:
 - conda-forge
+- pytorch
 dependencies:
 # Jupyter
 - jupyterlab=2
@@ -10,3 +11,7 @@ dependencies:
 - pip
 - fenics
 - h5py
+- pytorch
+- torchvision
+- torchaudio
+- cudatoolkit=10.2
