@@ -8,7 +8,8 @@
 * JupyterLab interface
 * [Gmsh](http://gmsh.info/) (version 4) for external meshing
 * `meshio` package for mesh conversion (https://github.com/nschloe/meshio)
-* `pygmsh` package for Python API of Gmsh (/https://pypi.org/project/pygmsh/)
+* `pygmsh` package for wrapped Python API of Gmsh (/https://pypi.org/project/pygmsh/)
+* `gmsh` package for Python API of Gmsh 
 
-**Warning**: the `mshr` package is unfortunately **unavailable** right now
+This project is forked from https://gitlab.enpc.fr/navier-fenics/fenics-binder
 
