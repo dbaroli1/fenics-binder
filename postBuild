@@ -2,4 +2,5 @@ pip install --upgrade gmsh
 pip install pygmsh
 pip install --no-cache-dir gmsh==4.8.0
 pip install nbgitpuller
+pip install  pykrige
 jupyter serverextension enable --py nbgitpuller --sys-prefix
