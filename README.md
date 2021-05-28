@@ -13,9 +13,3 @@
 
 **Warning**: the `mshr` package is unfortunately **unavailable** right now
 
-## Contact
-
-**Jeremy Bleyer** (jeremy.bleyer@enpc.fr) 
-
-Ecole des Ponts ParisTech, Laboratoire Navier (UMR 8205)
-
