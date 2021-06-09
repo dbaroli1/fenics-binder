@@ -1,7 +1,7 @@
 # `general-binder`: A repository to launch FEniCS within Binder and along many other packages
 
 ## Click on the Binder badge to launch
-
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/dbaroli1/general-binder/main)
 
 ## Contents
 
