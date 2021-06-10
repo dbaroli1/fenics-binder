@@ -1,0 +1,18 @@
+FROM quay.io/fenicsproject/stable:latest
+
+# create user with a home directory
+ARG NB_USER=jovyan
+ARG NB_UID=1000
+ENV USER ${NB_USER}
+ENV HOME /home/${NB_USER}
+ENV PATH /home/${NB_USER}/.local/bin:${PATH}
+
+# COPY install files since we are installing without pip!
+COPY --from=builder --chown=$NB_UID:$NB_UID /root/.local $HOME/.local
+
+RUN adduser -D \
+    -g "Default user" \
+    -u ${NB_UID} \
+    ${NB_USER}
+WORKDIR ${HOME}
+USER ${USER}
