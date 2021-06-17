@@ -14,8 +14,17 @@ ARG NB_UID=1000
 COPY . ${HOME}
 USER root
 RUN chown -R ${NB_UID} ${HOME}
+
+RUN adduser --disabled-password \
+    --gecos "Default user" \
+    --uid ${NB_UID} \
+    ${NB_USER}
+
+
 USER ${NB_USER}
 
+
+WORKDIR ${HOME}
 
 RUN pip install --no-cache --upgrade pip && \
     pip install --no-cache notebook
