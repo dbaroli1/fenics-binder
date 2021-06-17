@@ -14,7 +14,7 @@ ARG NB_USER=fenics
 ARG NB_UID=1000
 
 USER root
-RUN useradd -d /home/pymor --shell /bin/bash -u ${NB_UID} -o -c "" -m ${NB_USER} && \
+RUN useradd -d /home --shell /bin/bash -u ${NB_UID} -o -c "" -m ${NB_USER} && \
     chown -R ${NB_USER} ${HOME}
 
 
