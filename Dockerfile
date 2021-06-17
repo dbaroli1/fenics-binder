@@ -13,7 +13,7 @@ ARG NB_UID=1000
 
 USER root
 RUN useradd -d ${HOME} --shell /bin/bash -u ${NB_UID} -o -c "" -m ${NB_USER} && \
-    chown -R ${NB_USER} ${HOME} /root/.local
+    chown -R ${NB_USER} ${HOME}
 
 
 
