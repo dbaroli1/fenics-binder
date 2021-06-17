@@ -11,19 +11,12 @@ ENV USER ${NB_USER}
 ARG NB_USER=fenics
 ARG NB_UID=1000
 
+COPY . ${HOME}
 USER root
-RUN useradd -d ${HOME} --shell /bin/bash -u ${NB_UID} -o -c "" -m ${NB_USER} && \
-    chown -R ${NB_USER} ${HOME}
-
-
-
-#RUN adduser --disabled-password \
-#    --gecos "Default user" \
-#    --uid ${NB_UID} \
-#    ${NB_USER}
-WORKDIR ${HOME}
+RUN chown -R ${NB_UID} ${HOME}
 USER ${NB_USER}
-# Workaround matplotlib segfaulting with cold cache
-RUN python -c "from matplotlib import pyplot"
+
+WORKDIR ${HOME}
+
 
 
