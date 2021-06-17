@@ -10,31 +10,13 @@ ENV PATH /home/${NB_USER}/.local/bin:${PATH}
 # COPY install files since we are installing without pip!
 #COPY --from=builder --chown=$NB_UID:$NB_UID /root/.local $HOME/.local
 
-## Declares build arguments
-
-ARG NB_USER
-
-ARG NB_UID
-
-## Copies your repo files into the Docker Container
+ARG NB_USER=fenics
+ARG NB_UID=1000
 
 USER root
+RUN useradd -d /home/pymor --shell /bin/bash -u ${NB_UID} -o -c "" -m ${NB_USER} && \
+    chown -R ${NB_USER} ${HOME}
 
-COPY . ${HOME}
-
-## Enable this to copy files from the binder subdirectory
-
-## to the home, overriding any existing files.
-
-## Useful to create a setup on binder that is different from a
-
-## clone of your repository
-
-RUN chown -R ${NB_USER} ${HOME}
-
-## Become normal user again
-
-USER ${NB_USER}
 
 
 #RUN adduser --disabled-password \
@@ -42,5 +24,8 @@ USER ${NB_USER}
 #    --uid ${NB_UID} \
 #    ${NB_USER}
 WORKDIR ${HOME}
-#USER ${USER}
+USER ${NB_USER}
+# Workaround matplotlib segfaulting with cold cache
+RUN python -c "from matplotlib import pyplot"
+
 
