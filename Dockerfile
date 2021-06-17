@@ -13,7 +13,7 @@ ENV USER ${NB_USER}
 
 COPY . ${HOME}
 USER root
-RUN chown -R ${NB_UID} ${HOME}
+#RUN chown -R ${NB_UID} ${HOME}
 
 RUN adduser --disabled-password \
     --gecos "Default user" \
