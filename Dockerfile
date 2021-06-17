@@ -10,21 +10,17 @@ ENV NB_UID 1000
 RUN mkdir /home/${NB_USER}
 ENV HOME /home/${NB_USER}
 
-RUN adduser --disabled-password \
-    --gecos "Default user" \
-    --uid ${NB_UID} \
-    ${NB_USER}
-
-USER root
-RUN chown -R ${NB_UID} ${HOME}
+RUN  chown -R ${NB_USER} ${HOME}
 
 USER ${NB_USER}
+RUN  pip3 install pip==9.0.1 && \
+    pip3 install --no-cache-dir \
+         jupyter-rsession-proxy
 
-WORKDIR ${HOME}
+CMD jupyter notebook --ip 0.0.0.0
 
-EXPOSE 8888
 
-CMD ["jupyter", "notebook", "--port=8888", "--no-browser", "--ip=0.0.0.0", "--allow-root"]
+#CMD ["jupyter", "notebook", "--port=8888", "--no-browser", "--ip=0.0.0.0", "--allow-root"]
 # COPY install files since we are installing without pip!
 #COPY --from=builder --chown=$NB_UID:$NB_UID /root/.local $HOME/.local
 
